@@ -23,6 +23,8 @@ function plus(value1, value2) {
 alert(sum('0.1', false, 0.2, true, 1, 'A', 1, 'B', 1, 'C', 1, 'D', 1, 'E', 1, 'F', 1, 'G', '0x1'));
 */
 
+// -------------------------------
+
 /* Exercise 2 */
 function mySort(studentList) {
   studentList.sort(function(student1, student2) {
@@ -55,3 +57,50 @@ mySort(studentList);
 for (var i = 0; i < studentList.length; ++i)
   alert(studentList[i].name);
 */
+
+// -------------------------------
+
+/* Bonus */
+function Student(name, age, hometown) {
+  this.name = name;
+  this.age = age;
+  this. hometown = hometown;
+}
+
+// "students" is array of "Student"
+function TeacherAssistant(students) {
+  this.students = students;
+  this.search = function(item) {
+    var res = new Array();
+    for (var i = 0; i < this.students.length; ++i)
+      if (this.students[i].name === item || this.students[i].age === item)
+        res.push(this.students[i]);
+    return res;
+  };
+  this.first = function(item) {
+    for (var i = 0; i < this.students.length; ++i)
+      if (this.students[i].name === item || this.students[i].age === item)
+        return(this.students[i]);
+    return null;
+  }
+  this.diff = function(another) {
+    var res = new Array();
+    for (var i = 0; i < another.length; ++i) {
+      var have = false;
+      for (var j = 0; j < this.students.length; ++j)
+        if (this.students[j].name == another[i].name) {
+          have = true;
+          break;
+        }
+      if (!have)
+        res.push(another[i]);
+    }
+    return res;
+  }
+  this.merge = function(another) {
+    var newlyAdded = this.diff(another);
+    for (var i = 0; i < newlyAdded.length; ++i)
+      this.students.push(newlyAdded[i]);
+    return newlyAdded.length;
+  }
+}
