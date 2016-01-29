@@ -1,4 +1,4 @@
-//Exercise 1
+/* Exercise 1 */
 function sum() {
   var result = 0;
   for (var i = 0; i < arguments.length; ++i) {
@@ -19,4 +19,39 @@ function plus(value1, value2) {
   return M == 0? (value1 + value2) : ((value1 * M + value2 * M) / M);
 }
 
-//alert(sum('0.1', false, 0.2, true, 1, 'A', 1, 'B', 1, 'C', 1, 'D', 1, 'E', 1, 'F', 1, 'G', '0x1'));
+/* test
+alert(sum('0.1', false, 0.2, true, 1, 'A', 1, 'B', 1, 'C', 1, 'D', 1, 'E', 1, 'F', 1, 'G', '0x1'));
+*/
+
+/* Exercise 2 */
+function mySort(studentList) {
+  studentList.sort(function(student1, student2) {
+    if (student1.age != student2.age)
+      return student1.age - student2.age;
+    if (student1.score != student2.score)
+      return student2.score - student1.score;
+    if (student1.name < student2.name)
+      return -1;
+    if (student1.name > student2.name)
+      return 1;
+    return 0;
+  });
+}
+
+/* test
+var studentList = [
+  {
+    name: 'Mary',
+    age: 20,
+    score: 80
+  },
+  {
+    name: 'Cindy',
+    age: 21,
+    score: 90
+  }
+];
+mySort(studentList);
+for (var i = 0; i < studentList.length; ++i)
+  alert(studentList[i].name);
+*/
